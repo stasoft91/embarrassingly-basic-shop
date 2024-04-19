@@ -4,7 +4,6 @@ import CartButton from '@/components/CartButton.vue'
 </script>
 
 <template>
-
   <div class="container mx-auto flex justify-between items-center py-4">
     <RouterLink tag="h1" class="text-3xl font-bold underline px-2" to="/">
       Awesome Store
@@ -19,9 +18,6 @@ import CartButton from '@/components/CartButton.vue'
   <div class="container mx-auto mt-8">
     <RouterView />
   </div>
-
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
