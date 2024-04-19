@@ -39,12 +39,7 @@
         />
         <span class="text-lg font-semibold">{{ product.name }}</span>
         <span class="text-gray-600">{{ product.defaultDisplayedPriceFormatted }}</span>
-        <a
-          role="button"
-          @click.capture.stop.prevent="addToCart(product)"
-          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600 transition duration-100 hover:scale-105"
-          >Buy Now</a
-        >
+        <AddToCartButton :product="product" />
       </RouterLink>
     </div>
   </section>
@@ -59,8 +54,10 @@ import { storeToRefs } from 'pinia'
 import { useCartStore } from '@/stores/cart'
 import { productToLink } from '@/utils/client'
 import type { CategoriesItem, RichProduct } from '@/types/types'
+import AddToCartButton from '@/components/AddToCartButton.vue'
 
 export default defineComponent({
+  components: { AddToCartButton },
   methods: { productToLink },
   setup() {
     const isLoading = ref(true)

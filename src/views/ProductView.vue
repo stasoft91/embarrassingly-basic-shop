@@ -18,13 +18,8 @@
               </div>
             </div>
             <div class="flex -mx-2 mb-4">
-              <div class="w-1/2 px-2">
-                <button
-                  class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800"
-                  @click="addToCart(product)"
-                >
-                  Add to Cart
-                </button>
+              <div class="w-full px-2">
+                <AddToCartButton :product="product" class="w-full block text-center" />
               </div>
             </div>
           </div>
@@ -71,8 +66,10 @@ import { useRoute } from 'vue-router'
 import { ApiService } from '@/services/ApiService'
 import { useCartStore } from '@/stores/cart'
 import type { RichProduct } from '@/types/types'
+import AddToCartButton from '@/components/AddToCartButton.vue'
 
 export default defineComponent({
+  components: { AddToCartButton },
   setup() {
     const product = ref<RichProduct | null>(null)
     const route = useRoute()
