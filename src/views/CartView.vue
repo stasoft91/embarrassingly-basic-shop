@@ -19,7 +19,7 @@
                 <img :src="item.thumbnailUrl" :alt="item.name" class="w-16 h-16 object-contain" />
                 <div class="flex flex-col flex-auto">
                   <span class="text-lg font-semibold">{{ item.name }}</span>
-                  <span class="text-gray-600">{{ item.defaultDisplayedPriceFormatted }}</span>
+                  <span class="text-gray-600">{{ formatPrice(item.price) }}</span>
                 </div>
 
                 <button
@@ -52,22 +52,14 @@
 <script lang="ts" setup>
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
-import { productToLink } from '@/utils/client'
+import { formatPrice, productToLink } from '@/utils/client'
 import type { RichProduct } from '@/types/types'
 
 const cart = useCartStore()
 const cartItems: RichProduct[] = storeToRefs(cart).state.value?.items ?? []
 
 const getTotal = () => {
-  return cartItems.reduce(
-    (acc, item: RichProduct) =>
-      item.defaultDisplayedPrice ? acc + item.defaultDisplayedPrice : acc,
-    0
-  )
-}
-
-const formatPrice = (price: number) => {
-  return new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB' }).format(price)
+  return cartItems.reduce((acc, item: RichProduct) => (item.price ? acc + item.price : acc), 0)
 }
 
 const onPlaceOrderClick = () => {

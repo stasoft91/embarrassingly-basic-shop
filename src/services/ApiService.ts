@@ -1,5 +1,3 @@
-// ProductService for Ecwid API
-
 import { Ecwid, type SearchResult } from 'ecwid-api-client'
 import type { CategoriesResponse } from '@/types/types'
 import { ecwidConfig } from '@/constants/ecwid'

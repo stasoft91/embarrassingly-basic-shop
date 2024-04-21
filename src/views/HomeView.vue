@@ -38,7 +38,7 @@
           class="w-32 h-32 object-contain mb-2"
         />
         <span class="text-lg font-semibold">{{ product.name }}</span>
-        <span class="text-gray-600">{{ product.defaultDisplayedPriceFormatted }}</span>
+        <span class="text-gray-600">{{ formatPrice(product.price) }}</span>
         <AddToCartButton :product="product" />
       </RouterLink>
     </div>
@@ -52,13 +52,13 @@ import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import { useStoreStore } from '@/stores/store'
 import { storeToRefs } from 'pinia'
 import { useCartStore } from '@/stores/cart'
-import { productToLink } from '@/utils/client'
+import { formatPrice, productToLink } from '@/utils/client'
 import type { CategoriesItem, RichProduct } from '@/types/types'
 import AddToCartButton from '@/components/AddToCartButton.vue'
 
 export default defineComponent({
   components: { AddToCartButton },
-  methods: { productToLink },
+  methods: { formatPrice, productToLink },
   setup() {
     const isLoading = ref(true)
     const route = useRoute()

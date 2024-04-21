@@ -26,10 +26,10 @@
           <div class="md:flex-1 px-4">
             <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ product.name }}</h2>
             <p class="text-gray-600 text-sm mb-4">SKU: {{ product.sku }}</p>
-            <div class="flex mb-4">
+            <div class="flex mb-4 flex-wrap">
               <div class="mr-4">
                 <span class="font-bold text-gray-700">Price:&nbsp;</span>
-                <span class="text-gray-600">{{ product.defaultDisplayedPriceFormatted }}</span>
+                <span class="text-gray-600">{{ formatPrice(product.price) }}</span>
               </div>
               <div>
                 <span class="font-bold text-gray-700">Availability:&nbsp;</span>
@@ -67,8 +67,10 @@ import { ApiService } from '@/services/ApiService'
 import { useCartStore } from '@/stores/cart'
 import type { RichProduct } from '@/types/types'
 import AddToCartButton from '@/components/AddToCartButton.vue'
+import { formatPrice } from '../utils/client'
 
 export default defineComponent({
+  methods: { formatPrice },
   components: { AddToCartButton },
   setup() {
     const product = ref<RichProduct | null>(null)
