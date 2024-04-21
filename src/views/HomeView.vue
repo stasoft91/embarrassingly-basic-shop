@@ -32,7 +32,7 @@
         :to="productToLink(product)"
         v-for="product in products.items"
         :key="product.id"
-        class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center transition duration-300 ease-in-out transform hover:bg-emerald-50"
+        class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center transition duration-300 ease-in-out transform hover:bg-emerald-50 gap-1"
       >
         <img
           :src="product.thumbnailUrl"
