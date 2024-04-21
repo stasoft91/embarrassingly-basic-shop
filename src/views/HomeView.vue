@@ -21,9 +21,11 @@
 
   <!-- Products Section -->
   <section>
-    <h2 class="text-2xl font-bold mb-2 flex flex-row justify-between items-center">
+    <h2 class="text-2xl font-bold mb-2 flex flex-row gap-4 items-baseline">
       Products
-      <span v-if="isLoading" class="text-gray-600 text-sm">Loading...</span>
+      <span v-if="isLoading" class="text-gray-600">
+        <LoaderIcon size="6" color="text-emerald-400"/>
+      </span>
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <RouterLink
@@ -55,9 +57,10 @@ import { useCartStore } from '@/stores/cart'
 import { formatPrice, productToLink } from '@/utils/client'
 import type { CategoriesItem, RichProduct } from '@/types/types'
 import AddToCartButton from '@/components/AddToCartButton.vue'
+import LoaderIcon from '@/components/LoaderIcon.vue'
 
 export default defineComponent({
-  components: { AddToCartButton },
+  components: { LoaderIcon, AddToCartButton },
   methods: { formatPrice, productToLink },
   setup() {
     const isLoading = ref(true)
